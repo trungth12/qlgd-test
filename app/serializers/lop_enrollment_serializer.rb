@@ -31,12 +31,12 @@ class LopEnrollmentSerializer < ActiveModel::Serializer
     case percent
     when 100
       4
-    when 90..99
+    when 93..99.99
+      3
+    when 86..92.99
       2
-    when 80..89
+    when 80..85.99
       1
-    when 70..79
-      0
     else
       0
     end

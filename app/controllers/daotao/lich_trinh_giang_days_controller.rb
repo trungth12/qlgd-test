@@ -1,7 +1,7 @@
 class Daotao::LichTrinhGiangDaysController < TenantsController
 
 	def index
-		@lichs = LichTrinhGiangDay.waiting.map {|l| Daotao::LichTrinhGiangDaySerializer.new(Daotao::LichTrinhGiangDayDecorator.new(l))}
+		@lichs = LichTrinhGiangDay.includes(:lop_mon_hoc).includes(:giang_vien).includes(:vi_pham).waiting.map {|l| Daotao::LichTrinhGiangDaySerializer.new(Daotao::LichTrinhGiangDayDecorator.new(l))}
 		render json: @lichs, :root => false
 	end
 
@@ -30,8 +30,8 @@ class Daotao::LichTrinhGiangDaysController < TenantsController
 	def check
 		@lich = LichTrinhGiangDay.find(params[:id])
 		authorize @lich, :daotao?
-		temp = LichTrinhGiangDay.includes(:vi_pham).select {|l| @lich.conflict?(l)}
-		temp2 = LichTrinhGiangDay.includes(:vi_pham).select {|l| @lich.conflict_sinh_vien?(l)}
+		temp = LichTrinhGiangDay.select {|l| @lich.conflict?(l)}
+		temp2 = LichTrinhGiangDay.select {|l| @lich.conflict_sinh_vien?(l)}
 		@lichs = temp.map {|l| Daotao::LichTrinhGiangDaySerializer.new(Daotao::LichTrinhGiangDayDecorator.new(l))}
 		@sinh_vien_trungs = temp2.inject([]) {|res, elem| res += (elem.sinh_viens & @lich.sinh_viens )}.uniq.map {|sv| SinhVienSerializer.new(sv)}
 		
@@ -42,6 +42,4 @@ class Daotao::LichTrinhGiangDaysController < TenantsController
 		@lichs = LichTrinhGiangDay.daduyet.map {|l| Daotao::LichTrinhGiangDaySerializer.new(Daotao::LichTrinhGiangDayDecorator.new(l))}
 		render json: @lichs, :root => false
 	end
-
-	
 end

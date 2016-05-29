@@ -127,7 +127,7 @@ var LopHome = React.createClass({
 			<div class="table-responsive">
  				<table class="table table-bordered">
  					<thead>
- 						<td>Lớp</td><td>Môn</td><td>Khối lượng dự kiến</td><td>Khối lượng thực hiện</td><td>Sĩ số</td><td>Đã cấu hình</td>
+ 						<td>Lớp</td><td>Môn</td><td>Khối lượng dự kiến</td><td>Khối lượng thực hiện</td><td>Sĩ số</td><td>Trạng thái</td>
  					</thead>
  					<tbody>
  						{x}
@@ -147,7 +147,7 @@ var LopRow = React.createClass({
 				<td>{this.props.data.khoi_luong_du_kien}</td>
 				<td>{this.props.data.khoi_luong_thuc_hien}</td>
 				<td>{this.props.data.si_so}</td>
-				<td>{this.props.data.updated === false ? 'Chưa cấu hình' : 'Đã cấu hình'}</td>
+				<td>{this.props.data.completed === false ? 'Chưa kết thúc' : 'Đã hoàn thành'}</td>
 			</tr>
 		);
 	}

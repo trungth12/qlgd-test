@@ -1,5 +1,12 @@
 class Daotao::LopMonHocsController < TenantsController
-	def index
+	#before_action :check_author, only: [:create, :start, :restore, :remove, :update]
+    
+	#def check_author
+	#	raise "not authorized" unless LopMonHocPolicy.new(current_user, LopMonHoc).daotao?
+	#	authorize @lop, :daotao
+	#end
+    
+    def index
 		 #raise "not authorized" unless LopMonHocPolicy.new(current_user, LopMonHoc).daotao?		
 		@lops = LopMonHoc.select_all.map {|lop| Daotao::LopMonHocSerializer.new(lop)}
 		@t = @lops.map {|lop| {:id => lop.id, :text => lop.text}}

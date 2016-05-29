@@ -209,7 +209,7 @@ var Lop = React.createClass({
                       <td>{this.props.lop.si_so}</td>
                       <td>{this.props.lop.so_tiet_ly_thuyet}</td>
                       <td>{this.props.lop.so_tiet_thuc_hanh}</td>
-                      <td>{this.props.lop.updated === true ? 'Đã cấu hình' : 'Chưa cấu hình'}</td>              
+                      <td>{this.props.lop.completed === true ? 'Đã hoàn thành' : 'Chưa kết thúc'}</td>              
                   </tbody>           
                 </table>
               </div>     

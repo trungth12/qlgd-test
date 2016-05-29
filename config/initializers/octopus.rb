@@ -1,6 +1,6 @@
 begin
   shards = {:my_shards => {}}
-  Tenant.find(:all).each do |shard|
+  Tenant.find_each do |shard|
     shards[:my_shards][shard.database] = {:host => shard.host, :adapter => shard.adapter, :database => shard.database, :username => shard.username, :password => shard.password, :port => shard.port}
   end
 

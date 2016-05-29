@@ -91,7 +91,7 @@ var DisabledRowLichGiangDay = React.createClass({
 
  		if (this.state.edit === 0){
  			return (
-	 			<li><a href={"/lich/" + this.props.data.id}><strong>Tuần: {this.props.data.tuan}, {this.props.data.thoi_gian}</strong></a>
+	 			<li><a href={"/lich/" + this.props.data.id}><strong>Tuần: {this.props.data.tuan}, {this.props.data.thoi_gian} </strong></a>
 	 				<div>
 	 					<span dangerouslySetInnerHTML={{__html: this.props.data.content_html }} />
 	 				</div>

@@ -1,11 +1,10 @@
 class Enrollment < ActiveRecord::Base
 
   default_scope {includes(:sinh_vien).order('sinh_viens.encoded_position')}
-#  attr_accessible :sinh_vien_id, :bosung, :tong_tiet_vang
-  #belongs_to :lop_mon_hoc, :conditions => ['lop_mon_hocs.state != ?','removed']
+# attr_accessible :sinh_vien_id, :bosung, :tong_tiet_vang
+# belongs_to :lop_mon_hoc, :conditions => ['lop_mon_hocs.state != ?','removed']
   belongs_to :lop_mon_hoc
   belongs_to :sinh_vien
-
   has_many :lich_trinh_giang_days, :through => :lop_mon_hoc
   #validates :lop_mon_hoc, :sinh_vien, :presence => true
   has_many :assignment_groups, -> {uniq},  :through => :lop_mon_hoc
@@ -45,26 +44,13 @@ class Enrollment < ActiveRecord::Base
       0
     end     
   end
- def tinhhinhvang1
-    tmp = lop_mon_hoc.khoi_luong_du_kien
+ def tinhhinhvang
+    tmp = lop_mon_hoc.khoi_luong_du_kien.to_i
 	  tmp = 10000 if tmp == 0
      ((tong_vang * 100.0) / tmp).round(2);
   end
-  def tinhhinhvang
-    tmp = lop_mon_hoc.khoi_luong_du_kien if lop_mon_hoc.tong_so_tiet_hoc == 0
-  # if lop_mon_hoc.tong_so_tiet_hoc == 0
-  #   abc = 1
-  # tmp = ...
-  # end hoac else
-  #tmp = lop_mon_hoc.tong_so_tiet_hoc if lop_mon_hoc.tong_so_tiet_hoc > 0
-  #tmp = lop_mon_hoc.khoi_luong_thuc_hien
-  tmp = lop_mon_hoc.khoi_luong_du_kien
-  tmp = 10000 if tmp == 0
-  #File.open("E:/testtmp.txt","w:utf-8") {|f| f.puts (tmp) }
-  
-    (tong_vang * 100.0 / (tmp - (so_tiet_thua || 0))).round(2)
-  end
-  private
+
+private
   def delete_attendances
     Attendance.delete_all(id: attendances.map(&:id))
   end

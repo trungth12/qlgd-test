@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '4.0.6'
+gem 'rails', '4.2.6'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -32,6 +32,7 @@ group :development, :test do
   gem 'konacha'
   gem "bullet"
   gem 'sunspot_solr'
+  gem 'quiet_assets'
 end
 group :test do
   gem 'rb-notifu'
@@ -60,9 +61,14 @@ gem 'bootstrap-sass-rails'
 
 # To use debugger
 # gem 'debugger'
+gem "meta_request"
+gem "awesome_print", require:"ap"
+gem "better_errors"
+
+gem "protected_attributes"
 gem "slim-rails"
 gem "thin"
-gem 'devise', '~> 3.0.0.rc' 
+gem 'devise', '~> 3.4.0'
 gem 'devise_cas_authenticatable'
 gem "ice_cube"
 gem 'draper', '1.3.0'

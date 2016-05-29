@@ -18,13 +18,13 @@ class LichTrinhGiangDayDecorator < Draper::Decorator
     content.gsub(/\n/,'<br/>')
   end
   def updated
-  	object.state.to_sym != :nghile and object.state.to_sym != :nghiday and object.status.to_sym == :accepted or object.status.to_sym == :completed #and object.thoi_gian.localtime <= Time.now
+  	object.state.to_sym != :nghile and object.state.to_sym != :nghiday and object.status.to_sym == :accepted # or object.status.to_sym == :completed #and object.thoi_gian.localtime <= Time.now
   end
   def can_edit
     object.can_edit?
   end
   def can_diem_danh
-    updated and Time.now >= object.thoi_gian.localtime
+    updated and Time.now >= object.thoi_gian.localtime #and Time.now <= object.thoi_gian.localtime + 2.day
   end
   def sv_co_mat
   	object.lop_mon_hoc.enrollments.count - sv_vang_mat - object.attendances.where("state = 'idle'").count

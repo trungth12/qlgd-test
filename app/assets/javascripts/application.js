@@ -22,7 +22,7 @@
 //= require spinner
 //= require jquery.spin
 //= require jquery.mixitup.min
-//= require dataTables/jquery.dataTables
+
 //= require dataTables/jquery.dataTables.bootstrap3
 
 $(document).ready(function(){	

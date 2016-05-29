@@ -1,4 +1,18 @@
 class Daotao::AssistantsController < TenantsController
+	#before_action :get_lop
+	#before_action :check_auth
+
+	#def check_auth
+	#	if authorize @lop, :daotao?
+	#		flash[:notice] = "Sorry, you can’t do this" 
+	#		redirect_to "/"
+	#	end
+	#end
+
+	#def get_lop
+	#	@lop = LopMonHoc.find(params[:lop_id])
+	#end
+
 	def index
 		@lop = LopMonHoc.find(params[:lop_id])
 		authorize @lop, :daotao?

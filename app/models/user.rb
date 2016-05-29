@@ -39,7 +39,7 @@ class User < ActiveRecord::Base
       return self.imageable.enrollments.map {|en| en.lop_mon_hoc if en.lop_mon_hoc and !en.lop_mon_hoc.removed? }.select {|l| !l.nil? }.uniq
     else      
      # self.assistants.map {|as| as.lop_mon_hoc if as.lop_mon_hoc and !as.lop_mon_hoc.removed? }.select {|l| !l.nil? }.uniq
-    get_lops = Assistant.where(:giang_vien_id => self.imageable_id).map {|as| as.lop_mon_hoc if as.lop_mon_hoc and !as.lop_mon_hoc.removed? }.select {|l| !l.nil? }.uniq
+    get_lops = Assistant.includes(:lop_mon_hoc).where(:giang_vien_id => self.imageable_id).map {|as| as.lop_mon_hoc if as.lop_mon_hoc and !as.lop_mon_hoc.removed? }.select {|l| !l.nil? }.uniq
     end
   end  
   
@@ -50,7 +50,7 @@ class User < ActiveRecord::Base
     else
       #ids = self.assistants.map(&:giang_vien_id)
       ids = Assistant.where(:giang_vien_id => self.imageable_id).map{|as| as.lop_mon_hoc_id}
-      get_lichs = LichTrinhGiangDay.where(lop_mon_hoc_id: ids).includes(:lop_mon_hoc).includes(:vi_pham).sort_by {|l| [l.thoi_gian, l.phong]}
+      get_lichs = LichTrinhGiangDay.where(lop_mon_hoc_id: ids).sort_by {|l| [l.thoi_gian, l.phong]}
     end
   end
   

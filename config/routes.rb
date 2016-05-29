@@ -11,7 +11,7 @@ Qlgd::Application.routes.draw do
     get '/active',to:'dashboard#monitor'
     get "calendar",to:"dashboard#calendar"
     get "/lich/:id",to:"dashboard#lich"
-    get "/lop/:id",to:"dashboard#lop"  
+    get "/lop/:id",to:"dashboard#lop"
     get "/daotao",to:"dashboard#daotao"
     get "/thanhtra",to:'dashboard#thanhtra'
     get "/khoa",to:'dashboard#truongkhoa'
