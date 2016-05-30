@@ -4,7 +4,7 @@ class Teacher::LichTrinhGiangDaysController < TenantsController
 
 	
 	def info
-		lich = LichTrinhGiangDay.find(params[:lich_id])
+		lich = LichTrinhGiangDay.includes_vi_pham.find(params[:lich_id])
 		render json: LichTrinhGiangDaySerializer.new(lich.decorate), :root => false
 	end
 	def home

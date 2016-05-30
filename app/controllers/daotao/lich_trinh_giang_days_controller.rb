@@ -1,7 +1,7 @@
 class Daotao::LichTrinhGiangDaysController < TenantsController
 
 	def index
-		@lichs = LichTrinhGiangDay.includes(:lop_mon_hoc).includes(:giang_vien).includes(:vi_pham).waiting.map {|l| Daotao::LichTrinhGiangDaySerializer.new(Daotao::LichTrinhGiangDayDecorator.new(l))}
+		@lichs = LichTrinhGiangDay.waiting.map {|l| Daotao::LichTrinhGiangDaySerializer.new(Daotao::LichTrinhGiangDayDecorator.new(l))}
 		render json: @lichs, :root => false
 	end
 

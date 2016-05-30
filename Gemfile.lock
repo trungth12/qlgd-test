@@ -419,6 +419,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers (= 0.8.1)
+  activesupport
   acts_as_list
   apartment
   ar-octopus
@@ -482,4 +483,4 @@ DEPENDENCIES
   will_paginate-bootstrap
 
 BUNDLED WITH
-   1.12.4
+   1.12.5

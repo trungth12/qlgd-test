@@ -18,6 +18,7 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
 end
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'guard-rspec'
@@ -42,6 +43,7 @@ group :test do
   gem 'factory_girl_rails'
   gem 'timecop'
 end
+gem 'activesupport'
 gem 'progress_bar'
 gem 'jquery-rails'
 gem 'state_machine'

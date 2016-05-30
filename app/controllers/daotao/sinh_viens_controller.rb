@@ -42,8 +42,11 @@ class Daotao::SinhViensController < TenantsController
 	def remove
 		@lop = LopMonHoc.find(params[:lop_id])
 		authorize @lop, :daotao?
+		lich_ids = LichTrinhGiangDay.where(lop_mon_hoc: params[:lop_id]).map(&:id)
+		Attendance.where(sinh_vien_id: params[:sinh_viens],lich_trinh_giang_day_id: lich_ids).delete_all
 		@lop.enrollments.find(params[:enrollment_id]).delete
-		@lop.attendances.where(enrollment_id: params[:enrollment_id]).delete_all
+		# Attendance.where(lop_mon_hoc_id: params[:lop_id],sinh_vien_id: params[:sinh_vien_id]).delete_all
+		#@lop.attendances.where(enrollment_id: params[:enrollment_id]).delete_all
 		@enrollments = @lop.enrollments.order("enrollments.created_at")
 		render json: @enrollments.map {|en| LopEnrollmentSerializer.new(en)}, :root => false
 	end
