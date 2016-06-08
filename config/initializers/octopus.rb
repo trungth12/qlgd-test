@@ -1,3 +1,4 @@
+unless Rails.env.test?
 begin
   shards = {:my_shards => {}}
   Tenant.find_each do |shard|
@@ -11,4 +12,5 @@ begin
 
 rescue ActiveRecord::StatementInvalid => e
   puts e
+end
 end

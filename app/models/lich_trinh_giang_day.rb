@@ -81,13 +81,13 @@ class LichTrinhGiangDay < ActiveRecord::Base
     temp = LichTrinhGiangDay::CA2.detect {|k,v| v.cover?(Time.strptime("#{thoi_gian.localtime.hour}:#{thoi_gian.localtime.min}","%H:%M"))}
     temp[0]
   end
-  def includes_vi_pham
+  def self.includes_vi_pham
     self.includes(:vi_pham)
   end
-  def includes_giang_vien
+  def self.includes_giang_vien
     self.includes(:giang_vien)
   end
-  def includes_lop_mon_hoc
+  def self.includes_lop_mon_hoc
     self.includes(:lop_mon_hoc)
   end
   def ma_lop

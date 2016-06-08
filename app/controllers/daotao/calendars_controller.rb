@@ -5,7 +5,7 @@ class Daotao::CalendarsController < TenantsController
 		calendars = @lop.calendars.order(:tuan_hoc_bat_dau)
 		@tuans = calendars.generated.order('tuan_hoc_bat_dau, thu, tiet_bat_dau, giang_vien_id').group_by {|t| [t.tuan_hoc_bat_dau, t.so_tuan]}.keys.map{|t| (t[0]..t[0]+t[1]-1).to_a}
 		@c = calendars.map {|ca| Daotao::CalendarSerializer.new(ca)}
-		@teachers = @lop.assistants.map {|t| {:id => t.giang_vien_id, :text => t.giang_vien.hovaten} }
+		@teachers = @lop.assistants.includes(:giang_vien).map {|t| {:id => t.giang_vien_id, :text => t.giang_vien.hovaten} }
 		@phongs = Phong.all.map {|p| {:id => p.ma_phong, :text => p.ma_phong}}
 		render json: {:tuans => @tuans.flatten, :headers => @headers, :calendars => @c, :giang_viens => @teachers, :phongs => @phongs}
 	end

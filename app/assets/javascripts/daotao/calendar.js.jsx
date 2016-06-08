@@ -33,7 +33,7 @@ var DaotaoCalendar = React.createClass({
 	render: function(){
 		return (
 			<div><hr />
-			<input type="hidden" id="timlopcalendar" placeholder="Lớp môn học" style={{width:"500px"}} class="input-xlarge" />
+			<input  id="timlopcalendar" placeholder="Lớp môn học" style={{width:"500px"}} class="input-xlarge" />
 			<button class="btn btn-success" onClick={this.onSearch}>Tìm lớp</button>
 			<hr />			
 			<div id="cc"></div>

@@ -6,7 +6,7 @@
 var React = require("react");
 
 
- var GhepLop = React.createClass({
+var GhepLop = React.createClass({
  	
  	getInitialState: function(){
  		return {sinh_vien_id: -1, ma_lop_hanh_chinh: -1, lop_id: -1}
@@ -116,9 +116,9 @@ var React = require("react");
  			</div>
  		);
  	}
- });
+});
  
- var LopHanhChinh = React.createClass({
+var LopHanhChinh = React.createClass({
  	getInitialState: function(){
  		return {data: [], checked: []}
  	},

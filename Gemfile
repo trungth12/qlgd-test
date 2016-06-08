@@ -18,6 +18,7 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
 end
+gem 'jquery-ui-rails'
 
 group :development, :test do
   gem 'rspec-rails'
@@ -36,8 +37,8 @@ group :development, :test do
   gem 'quiet_assets'
 end
 group :test do
+  gem 'rails-helper' 
   gem 'rb-notifu'
-  gem 'wdm'
   gem 'selenium-webdriver'
   gem 'capybara'
   gem 'factory_girl_rails'
