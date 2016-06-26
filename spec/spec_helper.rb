@@ -1,5 +1,8 @@
 require 'rubygems'
+<<<<<<< HEAD
 require 'spork'
+=======
+>>>>>>> ca97b789912d706b2e8a194eac8be98cfd61b622
 #uncomment the following line to use spork with the debugger
 #require 'spork/ext/ruby-debug'
 
@@ -10,10 +13,14 @@ require 'spork'
 
 
 
+<<<<<<< HEAD
 Spork.each_run do
   # This code will be run each time you run your specs.
 
 end
+=======
+
+>>>>>>> ca97b789912d706b2e8a194eac8be98cfd61b622
 
 # --- Instructions ---
 # Sort the contents of this file into a Spork.prefork and a Spork.each_run
@@ -46,7 +53,10 @@ end
 
 
 
+<<<<<<< HEAD
 Spork.prefork do
+=======
+>>>>>>> ca97b789912d706b2e8a194eac8be98cfd61b622
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV["RAILS_ENV"] = 'test'
 require File.expand_path("../../config/environment", __FILE__)
@@ -86,4 +96,7 @@ RSpec.configure do |config|
   config.order = "random"
   config.include Capybara::DSL
 end
+<<<<<<< HEAD
 end
+=======
+>>>>>>> ca97b789912d706b2e8a194eac8be98cfd61b622

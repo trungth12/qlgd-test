@@ -4,7 +4,11 @@ class Teacher::LichTrinhGiangDaysController < TenantsController
 
 	
 	def info
+<<<<<<< HEAD
 		lich = LichTrinhGiangDay.find(params[:lich_id])
+=======
+		lich = LichTrinhGiangDay.includes_vi_pham.find(params[:lich_id])
+>>>>>>> ca97b789912d706b2e8a194eac8be98cfd61b622
 		render json: LichTrinhGiangDaySerializer.new(lich.decorate), :root => false
 	end
 	def home
@@ -65,7 +69,11 @@ class Teacher::LichTrinhGiangDaysController < TenantsController
 		end
 		render json: @lichs2, :root => false	
 	end
+<<<<<<< HEAD
 	def accept2
+=======
+	def accept
+>>>>>>> ca97b789912d706b2e8a194eac8be98cfd61b622
 		@lich = LichTrinhGiangDay.find(params[:lich_id])
 		authorize @lich, :update?
 		if @lich.vi_pham			

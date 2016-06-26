@@ -8,7 +8,11 @@ Qlgd::Application.configure do
   config.cache_classes = true
   config.react.variant = :development
   # Configure static asset server for tests with Cache-Control for performance
+<<<<<<< HEAD
   config.serve_static_assets = true
+=======
+  config.serve_static_assets = false
+>>>>>>> ca97b789912d706b2e8a194eac8be98cfd61b622
   config.static_cache_control = "public, max-age=3600"
   config.eager_load = false
   # Log error messages when you accidentally call methods on nil

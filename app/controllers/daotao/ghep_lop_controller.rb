@@ -4,7 +4,11 @@ class Daotao::GhepLopController < TenantsController
 		#results = SinhVien.where("ma_lop_hanh_chinh like ?", "%#{params[:q]}%").paginate(:page => params[:page], :per_page => params[:page_limit])
 		search = SinhVien.search do 
 			fulltext params[:q] do 
+<<<<<<< HEAD
 			   fields(:ma_lop_hanh_chinh)
+=======
+			fields(:ma_lop_hanh_chinh)
+>>>>>>> ca97b789912d706b2e8a194eac8be98cfd61b622
 			end
 			paginate(:page => params[:page] || 1, :per_page => params[:page_limit] || 30)
 		end

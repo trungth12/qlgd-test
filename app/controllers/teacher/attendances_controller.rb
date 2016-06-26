@@ -2,17 +2,25 @@
 class Teacher::AttendancesController < TenantsController
   
   def index    
+<<<<<<< HEAD
     
+=======
+>>>>>>> ca97b789912d706b2e8a194eac8be98cfd61b622
    	@lich = LichTrinhGiangDay.find(params[:lich_id])   
     #authorize @lich, :update?   
     #authorize @lich, :update?
     enrollments = @lich.lop_mon_hoc.enrollments    
     results = enrollments.map {|en| LichEnrollmentDecorator.new(en,@lich) }.map {|e| LichEnrollmentSerializer.new(e)}
     render json: {info: {lop: LopMonHocSerializer.new(@lich.lop_mon_hoc),  lich: LichTrinhGiangDaySerializer.new(@lich.decorate)}, enrollments: results}.to_json
+<<<<<<< HEAD
     
   end
   def settinglop
     
+=======
+  end
+  def settinglop
+>>>>>>> ca97b789912d706b2e8a194eac8be98cfd61b622
       @lich = LichTrinhGiangDay.find(params[:lich_id])
       render json: {:error => 'Lịch giảng dạy không tìm thấy'} unless @lich
       @lop = @lich.lop_mon_hoc
@@ -23,7 +31,10 @@ class Teacher::AttendancesController < TenantsController
       enrollments = @lich.lop_mon_hoc.enrollments    
       results = enrollments.map {|en| LichEnrollmentDecorator.new(en,@lich) }.map {|e| EnrollmentSerializer.new(e)}
       render json: {info: {lop: LopMonHocSerializer.new(@lich.lop_mon_hoc),  lich: LichTrinhGiangDaySerializer.new(@lich.decorate)}, enrollments: results}.to_json
+<<<<<<< HEAD
     
+=======
+>>>>>>> ca97b789912d706b2e8a194eac8be98cfd61b622
   end
   def update  	
     

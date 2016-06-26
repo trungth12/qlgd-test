@@ -10,7 +10,11 @@ class GiangVien < ActiveRecord::Base
   has_many :assistants, :dependent => :destroy
   has_many :lop_mon_hocs, -> {uniq}, :through => :assistants
   searchable do
+<<<<<<< HEAD
     text :hovaten
+=======
+    text :hovaten, boost: 5.0
+>>>>>>> ca97b789912d706b2e8a194eac8be98cfd61b622
     text :ho, :dem, :ten, :ten_khoa, :code
   end
   def hovaten

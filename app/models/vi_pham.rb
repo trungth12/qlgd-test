@@ -5,6 +5,11 @@ class ViPham < ActiveRecord::Base
   belongs_to :user
   validates :lich_trinh_giang_day, :presence => true
 
+<<<<<<< HEAD
+=======
+  
+
+>>>>>>> ca97b789912d706b2e8a194eac8be98cfd61b622
   state_machine :state, :initial => :pending do     
     # :accepted, :removed, :confirmed
     event :accept do 

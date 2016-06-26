@@ -6,7 +6,11 @@
 var React = require("react");
 
 
+<<<<<<< HEAD
  var GhepLop = React.createClass({
+=======
+var GhepLop = React.createClass({
+>>>>>>> ca97b789912d706b2e8a194eac8be98cfd61b622
  	
  	getInitialState: function(){
  		return {sinh_vien_id: -1, ma_lop_hanh_chinh: -1, lop_id: -1}
@@ -116,9 +120,15 @@ var React = require("react");
  			</div>
  		);
  	}
+<<<<<<< HEAD
  });
  
  var LopHanhChinh = React.createClass({
+=======
+});
+ 
+var LopHanhChinh = React.createClass({
+>>>>>>> ca97b789912d706b2e8a194eac8be98cfd61b622
  	getInitialState: function(){
  		return {data: [], checked: []}
  	},

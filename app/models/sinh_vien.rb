@@ -13,7 +13,11 @@ class SinhVien < ActiveRecord::Base
 
   FACETS = [:ten, :ma_lop_hanh_chinh, :nganh, :khoa, :he, :hoc_ky, :nam_hoc]
   searchable do
+<<<<<<< HEAD
     text :ten
+=======
+    text :ten, :boost => 5
+>>>>>>> ca97b789912d706b2e8a194eac8be98cfd61b622
     text :code, :hovaten, :ma_lop_hanh_chinh, :gioi_tinh, :he, :khoa, :nganh, :tin_chi
     text :ngay_sinh do 
       ngay_sinh.strftime("%d/%m/%Y")

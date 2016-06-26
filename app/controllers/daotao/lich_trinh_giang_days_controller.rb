@@ -1,7 +1,11 @@
 class Daotao::LichTrinhGiangDaysController < TenantsController
 
 	def index
+<<<<<<< HEAD
 		@lichs = LichTrinhGiangDay.includes(:lop_mon_hoc).includes(:giang_vien).includes(:vi_pham).waiting.map {|l| Daotao::LichTrinhGiangDaySerializer.new(Daotao::LichTrinhGiangDayDecorator.new(l))}
+=======
+		@lichs = LichTrinhGiangDay.waiting.map {|l| Daotao::LichTrinhGiangDaySerializer.new(Daotao::LichTrinhGiangDayDecorator.new(l))}
+>>>>>>> ca97b789912d706b2e8a194eac8be98cfd61b622
 		render json: @lichs, :root => false
 	end
 
@@ -42,6 +46,9 @@ class Daotao::LichTrinhGiangDaysController < TenantsController
 		@lichs = LichTrinhGiangDay.daduyet.map {|l| Daotao::LichTrinhGiangDaySerializer.new(Daotao::LichTrinhGiangDayDecorator.new(l))}
 		render json: @lichs, :root => false
 	end
+<<<<<<< HEAD
 
 	
+=======
+>>>>>>> ca97b789912d706b2e8a194eac8be98cfd61b622
 end

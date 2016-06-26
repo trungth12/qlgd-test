@@ -1,7 +1,11 @@
 class DashboardController < TenantsController
   
   def index    
+<<<<<<< HEAD
     @lichs = LichTrinhGiangDay.includes(:attendances).includes(:lop_mon_hoc => :enrollments).active.order('thoi_gian, phong')
+=======
+    @lichs = LichTrinhGiangDay.active.order('thoi_gian, phong')
+>>>>>>> ca97b789912d706b2e8a194eac8be98cfd61b622
   	respond_to do |format|
       format.html {render "index"} 
      
@@ -90,7 +94,11 @@ order by ag.position"
     @sinh_vien = SinhVien.find(params[:sinh_vien_id]) 
     @enrollments = @sinh_vien.enrollments.includes(:lop_mon_hoc).select {|en| !en.lop_mon_hoc.nil?} 
     @lops = @enrollments.map {|en| en.lop_mon_hoc if en.lop_mon_hoc and !en.lop_mon_hoc.removed? }.select {|l| !l.nil? }.uniq
+<<<<<<< HEAD
     @lichs = @lops.inject([]) {|res, elem| res + elem.lich_trinh_giang_days.includes(:attendances)}.sort_by {|l| [l.thoi_gian, l.phong]}
+=======
+    @lichs = @lops.inject([]) {|res, elem| res + elem.lich_trinh_giang_days}.sort_by {|l| [l.thoi_gian, l.phong]}
+>>>>>>> ca97b789912d706b2e8a194eac8be98cfd61b622
     
 	#query= "SELECT lmh.id ,lmh.state ,lmh.ma_lop ,lmh.ma_mon_hoc ,lmh.ten_mon_hoc ,rtrim(gv.ho) || ' ' || CASE WHEN gv.dem IS NULL OR gv.dem = '' THEN '' ELSE rtrim(gv.dem) || ' ' END || rtrim(gv.ten) giang_vien ,erm.tinhhinh ,erm.diem_qua_trinh FROM enrollments erm JOIN sinh_viens sv ON erm.sinh_vien_id = sv.id JOIN lop_mon_hocs lmh ON erm.lop_mon_hoc_id = lmh.id JOIN assistants ast ON lmh.id = ast.lop_mon_hoc_id JOIN giang_viens gv ON ast.giang_vien_id = gv.id WHERE sv.code = '#{@sinh_vien.code}' ORDER BY lmh.ten_mon_hoc"      
     #lop_ids = ActiveRecord::Base.connection.execute(query).map{|l| l["id"]}.uniq
@@ -108,7 +116,11 @@ order by ag.position"
   def giang_vien
     @giang_vien = GiangVien.includes(:assistants).find(params[:giang_vien_id])
     @assistants = @giang_vien.assistants.includes(:lop_mon_hoc)    
+<<<<<<< HEAD
     @lichs = @assistants.select {|as| as if as.lop_mon_hoc and !as.lop_mon_hoc.removed? }.uniq.inject([]) {|res, elem| res + elem.lop_mon_hoc.lich_trinh_giang_days.includes(:attendances)}.sort_by {|l| [l.thoi_gian, l.phong]}
+=======
+    @lichs = @assistants.select {|as| as if as.lop_mon_hoc and !as.lop_mon_hoc.removed? }.uniq.inject([]) {|res, elem| res + elem.lop_mon_hoc.lich_trinh_giang_days}.sort_by {|l| [l.thoi_gian, l.phong]}
+>>>>>>> ca97b789912d706b2e8a194eac8be98cfd61b622
     respond_to do |format|
       format.html {render "dashboard/teacher/show"}
      
@@ -129,7 +141,11 @@ order by ag.position"
           end
           @results = @search.results
           @ids = @results.map(&:id)
+<<<<<<< HEAD
           @sinhviens2 = SinhVien.includes(:enrollments).find(@ids)
+=======
+          @sinhviens2 = SinhVien.find(@ids)
+>>>>>>> ca97b789912d706b2e8a194eac8be98cfd61b622
           @sinhviens = @sinhviens2.map {|res| SinhVienDecorator.new(res)}
         elsif  params[:mtype].to_i == 2
           @search = Sunspot.search(LopMonHoc) do      
@@ -139,7 +155,11 @@ order by ag.position"
           end
           @results = @search.results
           @ids = @results.map(&:id)
+<<<<<<< HEAD
           @lop_mon_hocs = LopMonHoc.includes(:assistants).includes(:enrollments).find(@ids).map {|res| SearchLopMonHocDecorator.new(res)}          
+=======
+          @lop_mon_hocs = LopMonHoc.includes(:assistants).find(@ids).map {|res| SearchLopMonHocDecorator.new(res)}          
+>>>>>>> ca97b789912d706b2e8a194eac8be98cfd61b622
         elsif  params[:mtype].to_i == 3
           @search = Sunspot.search(LichTrinhGiangDay) do      
             fulltext params[:query]
@@ -148,7 +168,11 @@ order by ag.position"
           end
           @results = @search.results
           @ids = @results.map(&:id)
+<<<<<<< HEAD
           @lichs = LichTrinhGiangDay.includes(:lop_mon_hoc).includes(:giang_vien).find(@ids)
+=======
+          @lichs = LichTrinhGiangDay.includes(:giang_vien).find(@ids)
+>>>>>>> ca97b789912d706b2e8a194eac8be98cfd61b622
         end            
       end
       format.html {render "dashboard/search/non_query"}

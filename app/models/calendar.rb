@@ -1,7 +1,11 @@
 #encoding: utf-8
 class Calendar < ActiveRecord::Base
   include IceCube
+<<<<<<< HEAD
   scope :generated, -> {where(state: :generated)}
+=======
+  scope :generated, -> {where(state: :generated).includes(:giang_vien)}
+>>>>>>> ca97b789912d706b2e8a194eac8be98cfd61b622
  # attr_accessible :so_tiet, :so_tuan, :thu, :tiet_bat_dau, :tuan_hoc_bat_dau, :giang_vien_id, :phong, :lop_mon_hoc_id
   attr_reader :ngay_bat_dau, :ngay_ket_thuc, :schedule
 

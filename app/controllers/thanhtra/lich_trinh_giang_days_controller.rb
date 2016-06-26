@@ -3,11 +3,19 @@ class Thanhtra::LichTrinhGiangDaysController < TenantsController
 	def index
 		date = Date.strptime(params[:date], '%d/%m/%Y')
 		tomorrow = date + 1.day
+<<<<<<< HEAD
 		@lichs = LichTrinhGiangDay.thanhtra.includes(:vi_pham).where(["thoi_gian > ? and thoi_gian < ?", date.to_time.utc, tomorrow.to_time.utc]).map {|l| LichViPhamSerializer.new( LichViPhamDecorator.new(l) )}
 		render json: @lichs, :root => false
 	end
 	def update
 		@lich = LichTrinhGiangDay.find(params[:lich_id])
+=======
+		@lichs = LichTrinhGiangDay.includes_vi_pham.thanhtra.where(["thoi_gian > ? and thoi_gian < ?", date.to_time.utc, tomorrow.to_time.utc]).map {|l| LichViPhamSerializer.new( LichViPhamDecorator.new(l) )}
+		render json: @lichs, :root => false
+	end
+	def update
+		@lich = LichTrinhGiangDay.includes_vi_pham.find(params[:lich_id])
+>>>>>>> ca97b789912d706b2e8a194eac8be98cfd61b622
 		authorize @lich, :thanhtra?
 		if @lich.vi_pham			
 			@vi_pham = @lich.vi_pham
@@ -21,11 +29,19 @@ class Thanhtra::LichTrinhGiangDaysController < TenantsController
 
 		date = Date.strptime(params[:date], '%d/%m/%Y')
 		tomorrow = date + 1.day
+<<<<<<< HEAD
 		@lichs = LichTrinhGiangDay.thanhtra.includes(:vi_pham).where(["thoi_gian > ? and thoi_gian < ?", date.to_time.utc, tomorrow.to_time.utc]).map {|l| LichViPhamSerializer.new( LichViPhamDecorator.new(l) )}
 		render json: @lichs, :root => false
 	end
 	def dimuon
 		@lich = LichTrinhGiangDay.find(params[:lich_id])
+=======
+		@lichs = LichTrinhGiangDay.includes_vi_pham.thanhtra.where(["thoi_gian > ? and thoi_gian < ?", date.to_time.utc, tomorrow.to_time.utc]).map {|l| LichViPhamSerializer.new( LichViPhamDecorator.new(l) )}
+		render json: @lichs, :root => false
+	end
+	def dimuon
+		@lich = LichTrinhGiangDay.includes_vi_pham.find(params[:lich_id])
+>>>>>>> ca97b789912d706b2e8a194eac8be98cfd61b622
 		authorize @lich, :thanhtra?
 		if @lich.vi_pham			
 			@vi_pham = @lich.vi_pham
@@ -36,12 +52,20 @@ class Thanhtra::LichTrinhGiangDaysController < TenantsController
 		@vi_pham.save!
 		date = Date.strptime(params[:date], '%d/%m/%Y')
 		tomorrow = date + 1.day
+<<<<<<< HEAD
 		@lichs = LichTrinhGiangDay.thanhtra.includes(:vi_pham).where(["thoi_gian > ? and thoi_gian < ?", date.to_time.utc, tomorrow.to_time.utc]).map {|l| LichViPhamSerializer.new( LichViPhamDecorator.new(l) )}
+=======
+		@lichs = LichTrinhGiangDay.includes_vi_pham.thanhtra.where(["thoi_gian > ? and thoi_gian < ?", date.to_time.utc, tomorrow.to_time.utc]).map {|l| LichViPhamSerializer.new( LichViPhamDecorator.new(l) )}
+>>>>>>> ca97b789912d706b2e8a194eac8be98cfd61b622
 		render json: @lichs, :root => false
 	end
 
 	def vesom
+<<<<<<< HEAD
 		@lich = LichTrinhGiangDay.find(params[:lich_id])
+=======
+		@lich = LichTrinhGiangDay.includes_vi_pham.find(params[:lich_id])
+>>>>>>> ca97b789912d706b2e8a194eac8be98cfd61b622
 		authorize @lich, :thanhtra?
 		if @lich.vi_pham			
 			@vi_pham = @lich.vi_pham
@@ -52,7 +76,11 @@ class Thanhtra::LichTrinhGiangDaysController < TenantsController
 		@vi_pham.save!
 		date = Date.strptime(params[:date], '%d/%m/%Y')
 		tomorrow = date + 1.day
+<<<<<<< HEAD
 		@lichs = LichTrinhGiangDay.thanhtra.includes(:vi_pham).where(["thoi_gian > ? and thoi_gian < ?", date.to_time.utc, tomorrow.to_time.utc]).map {|l| LichViPhamSerializer.new( LichViPhamDecorator.new(l) )}
+=======
+		@lichs = LichTrinhGiangDay.includes_vi_pham.thanhtra.where(["thoi_gian > ? and thoi_gian < ?", date.to_time.utc, tomorrow.to_time.utc]).map {|l| LichViPhamSerializer.new( LichViPhamDecorator.new(l) )}
+>>>>>>> ca97b789912d706b2e8a194eac8be98cfd61b622
 		render json: @lichs, :root => false
 	end
 
@@ -68,7 +96,11 @@ class Thanhtra::LichTrinhGiangDaysController < TenantsController
 		@vi_pham.save!
 		date = Date.strptime(params[:date], '%d/%m/%Y')
 		tomorrow = date + 1.day
+<<<<<<< HEAD
 		@lichs = LichTrinhGiangDay.thanhtra.includes(:vi_pham).where(["thoi_gian > ? and thoi_gian < ?", date.to_time.utc, tomorrow.to_time.utc]).map {|l| LichViPhamSerializer.new( LichViPhamDecorator.new(l) )}
+=======
+		@lichs = LichTrinhGiangDay.thanhtra.where(["thoi_gian > ? and thoi_gian < ?", date.to_time.utc, tomorrow.to_time.utc]).map {|l| LichViPhamSerializer.new( LichViPhamDecorator.new(l) )}
+>>>>>>> ca97b789912d706b2e8a194eac8be98cfd61b622
 		render json: @lichs, :root => false
 	end
 
@@ -83,7 +115,11 @@ class Thanhtra::LichTrinhGiangDaysController < TenantsController
 		@vi_pham.report! if @vi_pham.can_report?		
 		date = Date.strptime(params[:date], '%d/%m/%Y')
 		tomorrow = date + 1.day
+<<<<<<< HEAD
 		@lichs = LichTrinhGiangDay.thanhtra.includes(:vi_pham).where(["thoi_gian > ? and thoi_gian < ?", date.to_time.utc, tomorrow.to_time.utc]).map {|l| LichViPhamSerializer.new( LichViPhamDecorator.new(l) )}
+=======
+		@lichs = LichTrinhGiangDay.thanhtra.where(["thoi_gian > ? and thoi_gian < ?", date.to_time.utc, tomorrow.to_time.utc]).map {|l| LichViPhamSerializer.new( LichViPhamDecorator.new(l) )}
+>>>>>>> ca97b789912d706b2e8a194eac8be98cfd61b622
 		render json: @lichs, :root => false
 	end
 
@@ -98,7 +134,11 @@ class Thanhtra::LichTrinhGiangDaysController < TenantsController
 		@vi_pham.unreport! if @vi_pham.can_unreport?		
 		date = Date.strptime(params[:date], '%d/%m/%Y')
 		tomorrow = date + 1.day
+<<<<<<< HEAD
 		@lichs = LichTrinhGiangDay.thanhtra.includes(:vi_pham).where(["thoi_gian > ? and thoi_gian < ?", date.to_time.utc, tomorrow.to_time.utc]).map {|l| LichViPhamSerializer.new( LichViPhamDecorator.new(l) )}
+=======
+		@lichs = LichTrinhGiangDay.thanhtra.where(["thoi_gian > ? and thoi_gian < ?", date.to_time.utc, tomorrow.to_time.utc]).map {|l| LichViPhamSerializer.new( LichViPhamDecorator.new(l) )}
+>>>>>>> ca97b789912d706b2e8a194eac8be98cfd61b622
 		render json: @lichs, :root => false
 	end
 
@@ -113,7 +153,11 @@ class Thanhtra::LichTrinhGiangDaysController < TenantsController
 		@vi_pham.remove! if @vi_pham.can_remove?		
 		date = Date.strptime(params[:date], '%d/%m/%Y')
 		tomorrow = date + 1.day
+<<<<<<< HEAD
 		@lichs = LichTrinhGiangDay.thanhtra.includes(:vi_pham).where(["thoi_gian > ? and thoi_gian < ?", date.to_time.utc, tomorrow.to_time.utc]).map {|l| LichViPhamSerializer.new( LichViPhamDecorator.new(l) )}
+=======
+		@lichs = LichTrinhGiangDay.thanhtra.where(["thoi_gian > ? and thoi_gian < ?", date.to_time.utc, tomorrow.to_time.utc]).map {|l| LichViPhamSerializer.new( LichViPhamDecorator.new(l) )}
+>>>>>>> ca97b789912d706b2e8a194eac8be98cfd61b622
 		render json: @lichs, :root => false
 	end
 
@@ -128,7 +172,11 @@ class Thanhtra::LichTrinhGiangDaysController < TenantsController
 		@vi_pham.confirm! if @vi_pham.can_confirm?		
 		date = Date.strptime(params[:date], '%d/%m/%Y')
 		tomorrow = date + 1.day
+<<<<<<< HEAD
 		@lichs = LichTrinhGiangDay.thanhtra.includes(:vi_pham).where(["thoi_gian > ? and thoi_gian < ?", date.to_time.utc, tomorrow.to_time.utc]).map {|l| LichViPhamSerializer.new( LichViPhamDecorator.new(l) )}
+=======
+		@lichs = LichTrinhGiangDay.thanhtra.where(["thoi_gian > ? and thoi_gian < ?", date.to_time.utc, tomorrow.to_time.utc]).map {|l| LichViPhamSerializer.new( LichViPhamDecorator.new(l) )}
+>>>>>>> ca97b789912d706b2e8a194eac8be98cfd61b622
 		render json: @lichs, :root => false
 	end
 
@@ -143,7 +191,11 @@ class Thanhtra::LichTrinhGiangDaysController < TenantsController
 		@vi_pham.restore! if @vi_pham.can_restore?		
 		date = Date.strptime(params[:date], '%d/%m/%Y')
 		tomorrow = date + 1.day
+<<<<<<< HEAD
 		@lichs = LichTrinhGiangDay.thanhtra.includes(:vi_pham).where(["thoi_gian > ? and thoi_gian < ?", date.to_time.utc, tomorrow.to_time.utc]).map {|l| LichViPhamSerializer.new( LichViPhamDecorator.new(l) )}
+=======
+		@lichs = LichTrinhGiangDay.thanhtra.where(["thoi_gian > ? and thoi_gian < ?", date.to_time.utc, tomorrow.to_time.utc]).map {|l| LichViPhamSerializer.new( LichViPhamDecorator.new(l) )}
+>>>>>>> ca97b789912d706b2e8a194eac8be98cfd61b622
 		render json: @lichs, :root => false
 	end
 end

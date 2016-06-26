@@ -50,7 +50,12 @@ class EnrollmentSubmissionDecorator < Draper::Decorator
     @object.sinh_vien.code
   end  
   def tinhhinh
+<<<<<<< HEAD
     return 0 if @assignment.lop_mon_hoc.khoi_luong_du_kien == 0
     (@object.tong_vang * 100.0 / @assignment.lop_mon_hoc.khoi_luong_du_kien).round(2)
+=======
+    return 0 if @assignment.lop_mon_hoc.tong_so_tiet == 0
+    (@object.tong_vang * 100.0 / @assignment.lop_mon_hoc.tong_so_tiet).round(2)
+>>>>>>> ca97b789912d706b2e8a194eac8be98cfd61b622
   end
 end

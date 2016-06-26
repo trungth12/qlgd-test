@@ -3,7 +3,11 @@ class AssignmentGroup < ActiveRecord::Base
 
   belongs_to :lop_mon_hoc
   #has_many :assignments, :dependent => :destroy, :order => "position, updated_at"
+<<<<<<< HEAD
   has_many :assignments, -> {order "assignments.position asc"}, :dependent => :destroy
+=======
+  has_many :assignments, -> {order "position"}, :dependent => :destroy
+>>>>>>> ca97b789912d706b2e8a194eac8be98cfd61b622
   has_many :group_submissions, :dependent => :destroy
   acts_as_list scope: :lop_mon_hoc
 
@@ -16,6 +20,9 @@ class AssignmentGroup < ActiveRecord::Base
   	return false if assignments.select {|a| a.can_destroy? == false}.count > 0
     return true
   end
+<<<<<<< HEAD
 
   
+=======
+>>>>>>> ca97b789912d706b2e8a194eac8be98cfd61b622
 end

@@ -4,11 +4,19 @@ Qlgd::Application.configure do
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
+<<<<<<< HEAD
   config.cache_classes = true
   config.react.variant = :development
   # Log error messages when you accidentally call methods on nil.
   # config.whiny_nils = true
   config.eager_load = true
+=======
+  config.cache_classes = false
+  config.react.variant = :development
+  # Log error messages when you accidentally call methods on nil.
+  # config.whiny_nils = true
+  config.eager_load = false
+>>>>>>> ca97b789912d706b2e8a194eac8be98cfd61b622
   config.after_initialize do
   Bullet.enable = true
   Bullet.alert = true

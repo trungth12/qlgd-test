@@ -10,7 +10,11 @@ class Assistant < ActiveRecord::Base
   validates :giang_vien, :lop_mon_hoc, :presence => true
 
   def get_lichs
+<<<<<<< HEAD
   	lop_mon_hoc.lich_trinh_giang_days.includes(:vi_pham).with_giang_vien(giang_vien.id)
+=======
+  	lop_mon_hoc.lich_trinh_giang_days.includes_vi_pham.with_giang_vien(giang_vien.id)
+>>>>>>> ca97b789912d706b2e8a194eac8be98cfd61b622
   end
   def khoi_luong_thuc_hien
     self.lop_mon_hoc.lich_trinh_giang_days.where(giang_vien_id: self.giang_vien.id).completed.sum(:so_tiet)

@@ -3,7 +3,11 @@ class UserDecorator < Draper::Decorator
 	delegate_all
 
 	def initialize(user)
+<<<<<<< HEAD
 		@user = User.where(id: user.id).includes(:groups).first
+=======
+		@user = User.where(id: user.id).first
+>>>>>>> ca97b789912d706b2e8a194eac8be98cfd61b622
 	end
 	def object
 		@user

@@ -2,12 +2,20 @@
 class LichTrinhGiangDay < ActiveRecord::Base
 
   include Comparable
+<<<<<<< HEAD
   default_scope {includes(:giang_vien).includes(:lop_mon_hoc).includes(:vi_pham).order('thoi_gian, phong')}
+=======
+  default_scope {includes(:lop_mon_hoc).includes(:giang_vien).order('thoi_gian, phong')}
+>>>>>>> ca97b789912d706b2e8a194eac8be98cfd61b622
 #  attr_accessible :lop_mon_hoc_id, :moderator_id, :noi_dung, :phong, :so_tiet, :state, :thoi_gian, :thuc_hanh, :tiet_bat_dau, :tiet_nghi, :tuan, :status, :giang_vien_id, :so_tiet_moi, :note, :ltype
   belongs_to :lop_mon_hoc
   belongs_to :giang_vien
   has_many :attendances, :dependent => :destroy
   has_many :enrollments, -> {uniq}, :through => :lop_mon_hoc
+<<<<<<< HEAD
+=======
+  has_many :sinh_viens, -> {uniq}, :through => :enrollments
+>>>>>>> ca97b789912d706b2e8a194eac8be98cfd61b622
   validates :thoi_gian, :so_tiet, :giang_vien_id, :state, :presence => true
   validate :check_thoi_gian, on: :create
   
@@ -17,6 +25,10 @@ class LichTrinhGiangDay < ActiveRecord::Base
     
   has_one :du_gio, :dependent => :destroy
   has_one :vi_pham, :dependent => :destroy
+<<<<<<< HEAD
+=======
+
+>>>>>>> ca97b789912d706b2e8a194eac8be98cfd61b622
   scope :not_tuhoc, -> { where("ltype != 'tuhoc'")}
   scope :active, -> { where(["thoi_gian > ? and thoi_gian < ?", Date.today.to_time.utc, Date.today.to_time.utc + 1.day])}
   scope :accepted, -> { where(status: :accepted)}
@@ -53,8 +65,12 @@ class LichTrinhGiangDay < ActiveRecord::Base
 
   FACETS = [:ma_lop, :ten_mon_hoc, :giang_vien, :phong, :tuan, :hoc_ky, :nam_hoc]
   searchable do
+<<<<<<< HEAD
     text :ma_lop
     text :ten_mon_hoc
+=======
+    text :ten_mon_hoc, boost: 5.0
+>>>>>>> ca97b789912d706b2e8a194eac8be98cfd61b622
     text :noi_dung, :phong, :tuan, :hoc_ky, :nam_hoc, :ma_lop, :ten_giang_vien
     text :thoi_gian do 
       thoi_gian.localtime.strftime("%d/%m/%Y")
@@ -72,10 +88,29 @@ class LichTrinhGiangDay < ActiveRecord::Base
     end
   end  
 
+<<<<<<< HEAD
+=======
+  def index
+     @lich = LichTrinhGiangDay.search(params[:q])
+     #@users = @search.result(:distinct => true).paginate(:page => params[:page])
+  end
+>>>>>>> ca97b789912d706b2e8a194eac8be98cfd61b622
   def ca    
     temp = LichTrinhGiangDay::CA2.detect {|k,v| v.cover?(Time.strptime("#{thoi_gian.localtime.hour}:#{thoi_gian.localtime.min}","%H:%M"))}
     temp[0]
   end
+<<<<<<< HEAD
+=======
+  def self.includes_vi_pham
+    self.includes(:vi_pham)
+  end
+  def self.includes_giang_vien
+    self.includes(:giang_vien)
+  end
+  def self.includes_lop_mon_hoc
+    self.includes(:lop_mon_hoc)
+  end
+>>>>>>> ca97b789912d706b2e8a194eac8be98cfd61b622
   def ma_lop
     self.lop_mon_hoc.ma_lop
   end

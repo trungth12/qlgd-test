@@ -2,7 +2,11 @@ require 'spec_helper'
 
 describe Attendance do
   
+<<<<<<< HEAD
   it "requires so_tiet_vang, state, sinh_vien" do
+=======
+  it "requires state, sinh_vien" do
+>>>>>>> ca97b789912d706b2e8a194eac8be98cfd61b622
     t1 = FactoryGirl.create(:tuan, :stt => 1, :tu_ngay => Date.new(2013, 8, 12).change(:offset => Rational(7,24)), :den_ngay => Date.new(2013, 8, 18).change(:offset => Rational(7,24)))
     t2 = FactoryGirl.create(:tuan, :stt => 2,  :tu_ngay => Date.new(2013, 8, 19).change(:offset => Rational(7,24)), :den_ngay => Date.new(2013, 8, 25).change(:offset => Rational(7,24)))
     t3 = FactoryGirl.create(:tuan, :stt => 3,  :tu_ngay => Date.new(2013, 8, 26).change(:offset => Rational(7,24)), :den_ngay => Date.new(2013, 8, 31).change(:offset => Rational(7,24)))

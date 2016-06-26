@@ -47,6 +47,7 @@ class LopEnrollmentSerializer < ActiveModel::Serializer
     @tong_vang
   end
   def tong_so_tiet
+<<<<<<< HEAD
     return 0 if object.lop_mon_hoc.tong_so_tiet == 0
     @tong_so_tiet ||= object.lop_mon_hoc.tong_so_tiet
     @tong_so_tiet
@@ -56,6 +57,12 @@ class LopEnrollmentSerializer < ActiveModel::Serializer
     @tong_so_tiet ||= object.lop_mon_hoc.khoi_luong_du_kien
     @tong_so_tiet
   end
+=======
+    return 1 if object.lop_mon_hoc.tong_so_tiet == 0
+    @tong_so_tiet ||= object.lop_mon_hoc.tong_so_tiet
+    @tong_so_tiet
+  end
+>>>>>>> ca97b789912d706b2e8a194eac8be98cfd61b622
   def percent    
     sv = (tong_so_tiet - tong_vang) / tong_so_tiet.to_f
     (sv * 100 ).round(2).to_i
